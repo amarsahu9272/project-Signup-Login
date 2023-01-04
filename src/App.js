@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import About from './about/About';
 import LogIn from './login/LogIn';
 import Register from './register/Register';
+// import { RecoilRoot } from 'recoil';
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/about/About' element={<About/>} />
-        <Route path='/login/LogIn' element={<LogIn/>} />
-        <Route path='/register/Register' element={<Register/>} />
+        <Route path='/about/About' element={<About />} />
+        <Route path='/login/LogIn' element={<LogIn />} />
+        <Route path='/register/Register' element={<Register />} />
       </Routes>
     </>
   );

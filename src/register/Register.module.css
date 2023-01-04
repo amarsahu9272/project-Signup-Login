@@ -42,4 +42,21 @@ button{
     align-items: center;
    
 }
+.img{
+    display: flex;
+    justify-content: center;
+}
+.containerImg{
+    display: flex;
+    border-radius: 150px;
+    align-items: center;
+    background-color: white;
+    width: 115px;
+    height: 115px;
+}
+.profile{
+    height: 100px;
+    width: 100px;
+    border-radius: 130px;
+}
 
