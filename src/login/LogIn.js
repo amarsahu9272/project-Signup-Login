@@ -2,15 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import style from './LogIn.module.css'
 import profile from '../profile.png'
-// import { useRecoilValue } from 'recoil'
-// import Selector from '../Selector/selector'
-
-// import PersonIcon from '@mui/icons-material/Person';
-// import { Button, Input } from '@mui/material';
 
 function LogIn() {
     const navigate = useNavigate()
-    // const [slectValue] = useRecoilValue(Selector)
     const initialValues = { name: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
@@ -27,29 +21,6 @@ function LogIn() {
         setIsSubmit(true);
 
         const loggedUser = JSON.parse(localStorage.getItem("registeredUserList"))
-        // loggedUser.map((user)=>{
-        //     if (formValues.name === user.name && formValues.password === user.password) {
-        //         alert("successfully logged in")
-        //         navigate("../about/About")
-        //         break
-        //     }
-        //     else {
-        //         alert("wrong Credentials")
-        //     }
-        // })
-
-        // for (var i = 0; i < loggedUser.length; i++) {
-        // if (formValues.name === loggedUser[i].name && formValues.password === loggedUser[i].password) {
-        //     alert("successfully logged in")
-        //     navigate("../about/About")
-        //     break
-
-        // }
-        // else {
-        //     // alert("wrong Credentials")
-        // }
-        // }
-
         const found = loggedUser.find(user => user.name === formValues.name && user.password === formValues.password)
         if (found) {
                 alert(`Welcome ${found.name}`)
@@ -58,23 +29,11 @@ function LogIn() {
             else {
                 alert("wrong Credentials")
             }
-        
-
-
-        // if (formValues.name === loggedUser.name && formValues.password === loggedUser.password) {
-        //     alert("successfully logged in")
-        //     navigate("../about/About")
-        // }
-        // else {
-        //     alert("wrong Credentials")
-        // }
 
     };
 
     useEffect(() => {
-        // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            // console.log(formValues);
         }
     }, [formErrors]);
 
@@ -100,7 +59,6 @@ function LogIn() {
             <form onSubmit={handleSubmit}>
                 <div className={style.outer}>
                     {Object.keys(formErrors).length === 0 && isSubmit ? (<div style={{ color: "green" }}>Signed in successfully</div>) : null}
-                    {/* (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>) */}
                     <div className={style.img}>
                         <div className={style.containerImg}>
                             <img className={style.profile} src={profile} alt='profile' />

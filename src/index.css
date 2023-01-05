@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgb(255, 255, 255); */
+ 
 }
 
 code {
@@ -41,11 +41,3 @@ nav a {
   text-decoration: none;
 }
 
-/* @media only screen and (min-width:636px)and(max-width:914px) {
-  nav {
-    background-color: black;
-    
-  
-  }
-
-} */

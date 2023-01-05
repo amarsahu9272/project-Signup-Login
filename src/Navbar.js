@@ -8,8 +8,7 @@ function Navbar() {
         <nav >
         <img src={reactLogo} alt='logo'/>
             <nav className='inner'>
-                {/* <Link to='/'>Home</Link> */}
-                <Link to='/about/About' className='anc'>About</Link>
+                <Link to='/about/About' className='anc'>Home</Link>
                 <Link to='/login/LogIn' className='anc'>Log-In</Link>
                 <Link to='/register/Register' className='anc'>Register</Link>
                 <AccountCircleIcon fontSize='small' className='anc' >

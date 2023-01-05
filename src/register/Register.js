@@ -6,13 +6,11 @@ import { useNavigate } from 'react-router-dom'
 function Register() {
 
     const navigate = useNavigate()
-    // const initialValues = { username: "", email: "", password: "" };
     const [formValues, setFormValues] = useState({ name: "", email: "", password: "" });
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
-        // const { name, value } = e.target;
         setFormValues({ ...formValues, [e.target.name]: e.target.value });
     };
 
@@ -22,21 +20,9 @@ function Register() {
         const [errors, booln] = validate(formValues)
         setFormErrors(errors);
         setIsSubmit(true);
-        // console.log(errors)
-
-        // localStorage.setItem("userList", JSON.stringify(formValues))
-        // navigate("../login/Login")
-       
-
-
-
     };
 
     useEffect(() => {
-        // console.log(formErrors);
-        // if (Object.keys(formErrors).length === 0 && isSubmit) {
-        //     console.log(formValues);
-        // }
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             let userList =JSON.parse(localStorage.getItem("registeredUserList"))||[]
             userList.push(formValues)
@@ -77,7 +63,6 @@ function Register() {
             <form onSubmit={handleSubmit}>
                 <div className={style.outer}>
                     {Object.keys(formErrors).length === 0 && isSubmit ? (<div style={{ color: "green" }}>Registered successfully</div>) : null}
-                    {/* (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>) */}
                     <div className={style.img}>
                         <div className={style.containerImg}>
                             <img className={style.profile} src={profile} alt='profile' />
