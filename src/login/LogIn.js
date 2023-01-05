@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import style from './LogIn.module.css'
 import profile from '../profile.png'
 // import { useRecoilValue } from 'recoil'
@@ -9,8 +9,9 @@ import profile from '../profile.png'
 // import { Button, Input } from '@mui/material';
 
 function LogIn() {
+    const navigate = useNavigate
     // const [slectValue] = useRecoilValue(Selector)
-    const initialValues = { username: "", password: "" };
+    const initialValues = { name: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -24,6 +25,16 @@ function LogIn() {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
+
+        const loggedUser = JSON.parse(localStorage.getItem("userList"))
+        if(formValues.name===loggedUser.name&&formValues===loggedUser.password)
+        {
+            navigate("/")
+        }
+        else{
+            alert("wrong Credentials")
+        }
+
     };
 
     useEffect(() => {
@@ -37,7 +48,7 @@ function LogIn() {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if (!values.username) {
-            errors.username = "Username is required!";
+            errors.name = "Username is required!";
         }
         if (!values.password) {
             errors.password = "Password is required";
@@ -61,7 +72,7 @@ function LogIn() {
                             <img className={style.profile} src={profile} alt='profile' />
                         </div>
                     </div>
-                    <input className={style.user} type="text" name="username" placeholder="Username" value={formValues.username} onChange={handleChange} />
+                    <input className={style.user} type="text" name="name" placeholder="Username" value={formValues.name} onChange={handleChange} />
                     <p style={{ color: "red" }}>{formErrors.username}</p>
                     <input className={style.pass} type="password" name="password" placeholder="Password" value={formValues.password} onChange={handleChange} />
                     <p style={{ color: "red" }}>{formErrors.password}</p>

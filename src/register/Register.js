@@ -1,40 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import style from './Register.module.css'
 import profile from '../profile.png'
-// import { useRecoilState } from 'recoil'
-// import Atom from '../Atoms/atom'
 import { useNavigate } from 'react-router-dom'
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-// import { Box, ThemeProvider, createTheme } from '@mui/system';
 
 function Register() {
-    // const [input,setInput]=useState({
-    //     name:"",
-    //     email:"",
-    //     password:""
-    // })
-    // const [atm, setAtm] = useRecoilState(Atom)
+
     const navigate = useNavigate()
-    const initialValues = { username: "", email: "", password: "" };
-    const [formValues, setFormValues] = useState(initialValues);
+    // const initialValues = { username: "", email: "", password: "" };
+    const [formValues, setFormValues] = useState({ name: "", email: "", password: "" });
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
+        // const { name, value } = e.target;
+        setFormValues({ ...formValues, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        localStorage.setItem("userList", JSON.stringyfy(formValues))
-        navigate("../login/Login")
-
-        setFormErrors(validate(formValues));
+        const [errors, booln] = validate(formValues)
+        setFormErrors(errors);
         setIsSubmit(true);
-       
-        
+
+        localStorage.setItem("userList", JSON.stringify(formValues))
+        // navigate("../login/Login")
+        // if(Object.keys(formErrors).length !== 0 && isSubmit){
+        //     localStorage.setItem("userList", JSON.stringify(formValues))
+        // }
+
+
     };
 
     useEffect(() => {
@@ -47,8 +42,8 @@ function Register() {
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        if (!values.username) {
-            errors.username = "Username is required!";
+        if (!values.name) {
+            errors.name = "Username is required!";
         }
         if (!values.email) {
             errors.email = "Email is required!";
@@ -62,7 +57,7 @@ function Register() {
         } else if (values.password.length > 10) {
             errors.password = "Password cannot exceed more than 10 characters";
         }
-        return errors;
+        return [errors, false];
     };
 
     return (
@@ -71,14 +66,13 @@ function Register() {
                 <div className={style.outer}>
                     {Object.keys(formErrors).length === 0 && isSubmit ? (<div style={{ color: "green" }}>Signed in successfully</div>) : null}
                     {/* (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>) */}
-                    {/* <div><AccountCircleIcon color='primary' fontSize='large'/></div>  */}
                     <div className={style.img}>
                         <div className={style.containerImg}>
                             <img className={style.profile} src={profile} alt='profile' />
                         </div>
                     </div>
 
-                    <input className={style.user} type="text" name="username" placeholder="Username" value={formValues.username} onChange={handleChange} />
+                    <input className={style.user} type="text" name="name" placeholder="Username" value={formValues.name} onChange={handleChange} />
                     <p style={{ color: "red" }}>{formErrors.username}</p>
 
                     <input className={style.email} type="text" name="email" placeholder="Email" value={formValues.email} onChange={handleChange} />
@@ -89,7 +83,7 @@ function Register() {
                     <div className={style.btn}>
                         <button>Register</button>
                     </div>
-                    {/* <p>{atm.email }{atm.userName}{atm.passWord}</p> */}
+
                 </div>
             </form>
         </>

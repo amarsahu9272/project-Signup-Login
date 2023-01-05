@@ -19,6 +19,7 @@ nav img {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
 }
 
 nav {
@@ -27,12 +28,18 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: azure;
 }
 
 nav a {
   margin-right: 16px;
 }
 
+.anc{
+  color:aliceblue;
+  font-weight: bolder;
+  text-decoration: none;
+}
 /* @media only screen and (min-width:636px)and(max-width:914px) {
   nav {
     background-color: black;

@@ -11,12 +11,16 @@ p{
 }
 .outer{
     padding: 30px;
+    justify-content: flex-end;
 }
 .box{
     display: flex;
     justify-items: flex-end;
     align-items: center;
     padding-left: 20vh;
+    position: absolute;
+    /* border: 5px solid black; */
+    margin-left: 60vh;
 }
 .dv{
     background-color: rgb(109, 139, 240);
@@ -25,7 +29,12 @@ p{
     height: 30vh;
     width: 32vh;
     margin-left: 1vh;
+    position: relative;
 }
 span{
-    color: rgb(109, 139, 240);
+    color: white;
+}
+.spn{
+    font-weight: bolder;
+    color: rgb(246, 250, 40);
 }

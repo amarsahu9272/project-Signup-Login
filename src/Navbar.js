@@ -9,10 +9,10 @@ function Navbar() {
         <img src={reactLogo} alt='logo'/>
             <nav className='inner'>
                 {/* <Link to='/'>Home</Link> */}
-                <Link to='/about/About'>About</Link>
-                <Link to='/login/LogIn'>Log-In</Link>
-                <Link to='/register/Register'>Register</Link>
-                <AccountCircleIcon fontSize='small' >
+                <Link to='/about/About' className='anc'>About</Link>
+                <Link to='/login/LogIn' className='anc'>Log-In</Link>
+                <Link to='/register/Register' className='anc'>Register</Link>
+                <AccountCircleIcon fontSize='small' className='anc' >
                 </AccountCircleIcon>
 
             </nav>
