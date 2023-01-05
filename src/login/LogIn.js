@@ -35,11 +35,10 @@ function LogIn() {
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
         }
-    }, [formErrors]);
+    }, [formErrors,isSubmit]);
 
     const validate = (values) => {
         const errors = {};
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if (!values.username) {
             errors.name = "Username is required!";
         }

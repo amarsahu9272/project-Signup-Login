@@ -17,7 +17,7 @@ function Register() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        const [errors, booln] = validate(formValues)
+        const [errors] = validate(formValues)
         setFormErrors(errors);
         setIsSubmit(true);
     };
@@ -29,7 +29,7 @@ function Register() {
             localStorage.setItem("registeredUserList", JSON.stringify(userList))
             navigate("../login/Login")
         }
-    }, [formErrors]);
+    }, [formErrors,isSubmit,formValues,navigate]);
 
     const validate = (values) => {
         const errors = {};
