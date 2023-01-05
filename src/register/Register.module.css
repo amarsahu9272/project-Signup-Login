@@ -5,7 +5,7 @@ body{
 .outer{
     margin: 25vh;
     background-color: white;
-    height: 20vh;
+    height: 50vh;
     width: 60vh;
     padding: 10vh;
     padding-left: 20vh;
@@ -36,15 +36,10 @@ button{
 
 }
 
-.profile{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
 .img{
     display: flex;
     justify-content: center;
+
 }
 .containerImg{
     display: flex;
@@ -53,6 +48,7 @@ button{
     background-color: white;
     width: 115px;
     height: 115px;
+   
 }
 .profile{
     height: 100px;

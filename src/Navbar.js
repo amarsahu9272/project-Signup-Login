@@ -6,12 +6,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 function Navbar() {
     return (
         <nav >
-        <img src={reactLogo} alt='logo'></img>
+        <img src={reactLogo} alt='logo'/>
             <nav className='inner'>
-                <Link to='/'>Home</Link>
+                {/* <Link to='/'>Home</Link> */}
                 <Link to='/about/About'>About</Link>
                 <Link to='/login/LogIn'>Log-In</Link>
-                <AccountCircleIcon fontSize='small'/>
+                <Link to='/register/Register'>Register</Link>
+                <AccountCircleIcon fontSize='small' >
+                </AccountCircleIcon>
 
             </nav>
         </nav>

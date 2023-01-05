@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom'
-import Home from './home/Home';
+// import Home from './home/Home';
 import Navbar from './Navbar';
 import About from './about/About';
 import LogIn from './login/LogIn';
@@ -13,7 +13,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<About />} />
         <Route path='/about/About' element={<About />} />
         <Route path='/login/LogIn' element={<LogIn />} />
         <Route path='/register/Register' element={<Register />} />
