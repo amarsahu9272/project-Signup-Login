@@ -22,20 +22,24 @@ function Register() {
         const [errors, booln] = validate(formValues)
         setFormErrors(errors);
         setIsSubmit(true);
+        // console.log(errors)
 
-        localStorage.setItem("userList", JSON.stringify(formValues))
+        // localStorage.setItem("userList", JSON.stringify(formValues))
         // navigate("../login/Login")
-        // if(Object.keys(formErrors).length !== 0 && isSubmit){
-        //     localStorage.setItem("userList", JSON.stringify(formValues))
-        // }
+       
+
 
 
     };
 
     useEffect(() => {
         // console.log(formErrors);
+        // if (Object.keys(formErrors).length === 0 && isSubmit) {
+        //     console.log(formValues);
+        // }
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            // console.log(formValues);
+            localStorage.setItem("userList", JSON.stringify(formValues))
+            navigate("../login/Login")
         }
     }, [formErrors]);
 
@@ -44,18 +48,24 @@ function Register() {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if (!values.name) {
             errors.name = "Username is required!";
+
         }
         if (!values.email) {
             errors.email = "Email is required!";
+
         } else if (!regex.test(values.email)) {
             errors.email = "This is not a valid email format!";
+
         }
         if (!values.password) {
             errors.password = "Password is required";
+
         } else if (values.password.length < 4) {
             errors.password = "Password must be more than 4 characters";
+
         } else if (values.password.length > 10) {
             errors.password = "Password cannot exceed more than 10 characters";
+
         }
         return [errors, false];
     };
@@ -64,7 +74,7 @@ function Register() {
         <>
             <form onSubmit={handleSubmit}>
                 <div className={style.outer}>
-                    {Object.keys(formErrors).length === 0 && isSubmit ? (<div style={{ color: "green" }}>Signed in successfully</div>) : null}
+                    {Object.keys(formErrors).length === 0 && isSubmit ? (<div style={{ color: "green" }}>Registered successfully</div>) : null}
                     {/* (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>) */}
                     <div className={style.img}>
                         <div className={style.containerImg}>

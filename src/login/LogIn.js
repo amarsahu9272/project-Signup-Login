@@ -9,7 +9,7 @@ import profile from '../profile.png'
 // import { Button, Input } from '@mui/material';
 
 function LogIn() {
-    const navigate = useNavigate
+    const navigate = useNavigate()
     // const [slectValue] = useRecoilValue(Selector)
     const initialValues = { name: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
@@ -27,11 +27,11 @@ function LogIn() {
         setIsSubmit(true);
 
         const loggedUser = JSON.parse(localStorage.getItem("userList"))
-        if(formValues.name===loggedUser.name&&formValues===loggedUser.password)
-        {
-            navigate("/")
+        if (formValues.name === loggedUser.name && formValues.password === loggedUser.password) {
+            alert("successfully logged in")
+            navigate("../about/About")
         }
-        else{
+        else {
             alert("wrong Credentials")
         }
 

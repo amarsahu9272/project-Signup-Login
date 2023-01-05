@@ -2,8 +2,10 @@
 body{
     background-color: rgb(4, 86, 138);
 }
+
 .outer{
-    margin: 25vh;
+    margin: 6vh;
+    margin-left: 10vh;
     background-color: white;
     height: 50vh;
     width: 60vh;
@@ -42,6 +44,7 @@ button{
 
 }
 .containerImg{
+    
     display: flex;
     border-radius: 150px;
     align-items: center;
