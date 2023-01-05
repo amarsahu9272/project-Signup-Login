@@ -26,14 +26,48 @@ function LogIn() {
         setFormErrors(validate(formValues));
         setIsSubmit(true);
 
-        const loggedUser = JSON.parse(localStorage.getItem("userList"))
-        if (formValues.name === loggedUser.name && formValues.password === loggedUser.password) {
-            alert("successfully logged in")
-            navigate("../about/About")
+        const loggedUser = JSON.parse(localStorage.getItem("registeredUserList"))
+        // loggedUser.map((user)=>{
+        //     if (formValues.name === user.name && formValues.password === user.password) {
+        //         alert("successfully logged in")
+        //         navigate("../about/About")
+        //         break
+        //     }
+        //     else {
+        //         alert("wrong Credentials")
+        //     }
+        // })
+
+        // for (var i = 0; i < loggedUser.length; i++) {
+        // if (formValues.name === loggedUser[i].name && formValues.password === loggedUser[i].password) {
+        //     alert("successfully logged in")
+        //     navigate("../about/About")
+        //     break
+
+        // }
+        // else {
+        //     // alert("wrong Credentials")
+        // }
+        // }
+
+        const found = loggedUser.find(user => user.name === formValues.name && user.password === formValues.password)
+        if (found) {
+                alert(`Welcome ${found.name}`)
+                navigate("../about/About")
         }
-        else {
-            alert("wrong Credentials")
-        }
+            else {
+                alert("wrong Credentials")
+            }
+        
+
+
+        // if (formValues.name === loggedUser.name && formValues.password === loggedUser.password) {
+        //     alert("successfully logged in")
+        //     navigate("../about/About")
+        // }
+        // else {
+        //     alert("wrong Credentials")
+        // }
 
     };
 

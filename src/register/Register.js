@@ -38,7 +38,9 @@ function Register() {
         //     console.log(formValues);
         // }
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            localStorage.setItem("userList", JSON.stringify(formValues))
+            let userList =JSON.parse(localStorage.getItem("registeredUserList"))||[]
+            userList.push(formValues)
+            localStorage.setItem("registeredUserList", JSON.stringify(userList))
             navigate("../login/Login")
         }
     }, [formErrors]);
