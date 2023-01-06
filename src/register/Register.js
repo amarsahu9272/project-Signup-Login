@@ -17,45 +17,52 @@ function Register() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        const [errors] = validate(formValues)
-        setFormErrors(errors);
+        setFormErrors(validate(formValues));
         setIsSubmit(true);
     };
 
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            let userList =JSON.parse(localStorage.getItem("registeredUserList"))||[]
+            let userList = JSON.parse(localStorage.getItem("registeredUserList")) || []
             userList.push(formValues)
             localStorage.setItem("registeredUserList", JSON.stringify(userList))
             navigate("../login/Login")
         }
-    }, [formErrors,isSubmit,formValues,navigate]);
+    }, [formErrors, isSubmit, formValues, navigate]);
 
     const validate = (values) => {
         const errors = {};
+
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        if (!values.name) {
-            errors.name = "Username is required!";
-
+        var inValid = /\s/;
+        if (inValid.test(values.name)) {
+            errors.name = "*username name wouldn't have whiteSpace"
         }
+        else if (inValid.test(values.email)) {
+            errors.email = "*email wouldn't have whiteSpace"
+        }
+        else if (inValid.test(values.password)) {
+            errors.password = "*password wouldn't have whiteSpace"
+        }
+
+        if (!values.name) {
+            errors.name = "*Username is required!";
+        }
+
         if (!values.email) {
-            errors.email = "Email is required!";
-
+            errors.email = "*Email is required!";
         } else if (!regex.test(values.email)) {
-            errors.email = "This is not a valid email format!";
-
+            errors.email = "*This is not a valid email format!";
         }
         if (!values.password) {
-            errors.password = "Password is required";
-
-        } else if (values.password.length < 4) {
-            errors.password = "Password must be more than 4 characters";
-
+            errors.password = "*Password is required";
+        } else if (values.password.length < 8) {
+            errors.password = "*Password must be more than 8 characters";
         } else if (values.password.length > 10) {
-            errors.password = "Password cannot exceed more than 10 characters";
-
+            errors.password = "*Password cannot exceed more than 10 characters";
         }
-        return [errors, false];
+
+        return errors;
     };
 
     return (
@@ -70,7 +77,7 @@ function Register() {
                     </div>
 
                     <input className={style.user} type="text" name="name" placeholder="Username" value={formValues.name} onChange={handleChange} />
-                    <p style={{ color: "red" }}>{formErrors.username}</p>
+                    <p style={{ color: "red" }}>{formErrors.name}</p>
 
                     <input className={style.email} type="text" name="email" placeholder="Email" value={formValues.email} onChange={handleChange} />
                     <p style={{ color: "red" }}>{formErrors.email}</p>
